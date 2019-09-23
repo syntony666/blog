@@ -2,7 +2,7 @@
 title: Ubuntu 相關指令集
 date: 2019-09-24 00:05:54
 tags:
- - ubuntu
+  - ubuntu
 ---
 
 ## Install C++ with Google Test
