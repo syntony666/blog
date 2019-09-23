@@ -84,4 +84,4 @@ deploy:
   type: git
   repo: git@github.com:syntony666/blog.git
   branch: gh-pages
-  message: comment out search part
+  message: 
