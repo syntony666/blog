@@ -19,8 +19,8 @@ nav:
   articles: /archives/
   tags: /tags/  
   # search: /search/
-  projects: /projects/
-  # projects: http://github.com/syntony666
+  # projects: /projects/
+  projects: http://github.com/syntony666
 
 
 # Links to your social media accounts.
