@@ -1,6 +1,5 @@
 ---
  title: About Me
- date: 2019-9-23 15:33:04
  type: "about"
  comments: false
 ---
@@ -14,5 +13,7 @@
 - Studying in NTUT EECS and major in IEEE
 
 - Having learnt Python, C, C++
+
+- Leaning Java now!!
 
 Giave me a star if you like me!
