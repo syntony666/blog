@@ -5,7 +5,7 @@ tags:
  - ubuntu
 ---
 
-### Install C++ with Google Test
+## Install C++ with Google Test
 
 ```bash
 sudo apt update
@@ -16,7 +16,7 @@ sudo make
 sudo cp *.a /usr/lib
 ```
 
-### Install Java
+## Install Java
 
 ```bash
 sudo apt install default-jdk default-jre maven
