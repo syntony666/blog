@@ -10,7 +10,7 @@
 
 - Graduate from HCHS in Kaohsiung
 
-- Studying in NTUT EECS and major in IEEE
+- Studying in NTUT EECS and major in CSIE
 
 - Having learnt Python, C, C++
 
