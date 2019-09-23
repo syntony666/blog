@@ -16,4 +16,4 @@
 
 - Leaning Java now!!
 
-Giave me a star if you like me!
+Give me a star if you like me!
