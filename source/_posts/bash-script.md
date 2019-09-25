@@ -5,6 +5,18 @@ tags:
   - ubuntu
 ---
 
+## Update the package lists:
+
+```bash
+sudo apt update
+```
+
+## Upgrade the package version:
+
+```bash
+sudo apt upgrade
+```
+
 ## Install C++ with Google Test
 
 ```bash
@@ -20,4 +32,15 @@ sudo cp *.a /usr/lib
 
 ```bash
 sudo apt install default-jdk default-jre maven
+```
+
+## Install Python
+
+Linux would have installed Python 2.x and Python 3.x.
+
+If you don't find it, install it by using following commands:
+
+```bash
+sudo apt install python3   //安裝python 3.x
+sudo apt install python    //安裝python 2.x
 ```
