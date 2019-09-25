@@ -1,5 +1,5 @@
 ---
-title: WSL 活用術
+title: WSL 安裝
 date: 2019-09-25 18:30:00
 tags: 
   - wsl

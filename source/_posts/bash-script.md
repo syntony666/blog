@@ -5,13 +5,13 @@ tags:
   - ubuntu
 ---
 
-## Update the package lists:
+## Update the package lists
 
 ```bash
 sudo apt update
 ```
 
-## Upgrade the package version:
+## Upgrade the package version
 
 ```bash
 sudo apt upgrade
