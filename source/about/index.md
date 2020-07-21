@@ -12,8 +12,8 @@
 
 - Studying in NTUT EECS and major in CSIE
 
-- Having learnt Python, C, C++
+- Having learnt Python, C, C++, Java, Javascript
 
-- Leaning Java now!!
+- Having project with Sunbird Inc.
 
 Give me a star if you like me!
