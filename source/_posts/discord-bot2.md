@@ -22,7 +22,7 @@ tags:
 
 ![](discord-bot2-2.png)
 
-填寫完機器人的基本資料，記住你的 CLIENT ID 及 CLIENT SECRET，等等會用到
+填寫完機器人的基本資料，記住你的 `CLIENT ID` 及 `CLIENT SECRET`，等等會用到
 
 ![](discord-bot2-3.png)
 
@@ -40,11 +40,11 @@ https://discord.com/oauth2/authorize?client_id=<your_client_id>&scope=bot&permis
 
 ### 建立專案
 
-在一個你喜歡的地方新增一個資料夾，然後資料夾中新增 bot.py
+在一個你喜歡的地方新增一個資料夾，然後資料夾中新增 `bot.py`
 
 ### 建立 bot.py
 
-在 bot.py 寫入下列程式碼：
+在 `bot.py` 寫入下列程式碼：
 
 ```python
 import discord
