@@ -17,8 +17,9 @@ timezone: Asia/Taipei
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year:month:day/:title/
+permalink:  :urlname/:title/
 permalink_defaults:
+  urlname: archives
 
 # Directory
 source_dir: source
@@ -85,4 +86,4 @@ deploy:
   type: git
   repo: https://github.com/syntony666/blog.git
   branch: gh-pages
-  message: 
+  message: change layouts

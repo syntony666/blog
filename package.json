@@ -5,6 +5,13 @@
   "hexo": {
     "version": "5.2.0"
   },
+  "scripts": {
+    "s": "hexo clean && hexo s",
+    "deploy": "hexo clean && hexo deploy -g",
+    "git": "git add . && git commit -m",
+    "postgit": "git push origin blogSource",
+    "push": "npm run deploy && npm run git"
+  },
   "dependencies": {
     "hexo": "^5.2.0",
     "hexo-deployer-git": "^2.1.0",

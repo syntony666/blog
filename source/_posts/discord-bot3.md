@@ -1,6 +1,7 @@
 ---
 title: Discord 對話機器人製作全記錄（三）
 date: 2020-07-24 00:16:01
+categories: Discord Bot
 tags:
  - discord-bot
  - Python
