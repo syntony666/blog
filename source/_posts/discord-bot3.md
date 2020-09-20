@@ -64,10 +64,10 @@ def setup(bot):
 
 ```python
 @commands.Cog.listener()
-    async def on_ready(self):
-        print('Ready!')
-        print('Logged in as ---->' , self.bot.user) # self.bot.user 回傳 機器人名稱#1234
-        print('ID:', self.bot.user.id) # self.bot.user.id 回傳 機器人ID
+async def on_ready(self):
+    print('Ready!')
+    print('Logged in as ---->' , self.bot.user) # self.bot.user 回傳 機器人名稱#1234
+    print('ID:', self.bot.user.id) # self.bot.user.id 回傳 機器人ID
 ```
 
 將上面的函式放入 `event.py` 的 `class event` 後，在終端機輸入 `python3 bot.py` ，就會顯示下列文字：
@@ -90,14 +90,16 @@ ID:<your_bot_id>
 
 ```python
 @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
-            return
-        if message.content == 'foo': # 當收到訊息為‘foo’
-            await message.channel.send('bar') # 回應‘bar’
+async def on_message(self, message)
+if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
+        return
+    if message.content == 'foo': # 當收到訊息為‘foo’
+        await message.channel.send('bar') # 回應‘bar’
 ```
 
-將上面的函式放入 `event.py` 的 `class event` 後，在終端機輸入 `python3 bot.py` ，確認機器人在線上後，當我們在機器人所在的伺服器傳送 'foo' 時，他會回應我們 'bar'。
+將上面的函式放入 `event.py` 的 `class event` 後，在終端機輸入 `python3 bot.py` ，確認機器人在線上後，當我們在機器人所在的伺服器傳送 'foo' 時，他會回應我們 'bar'
+
+
 
 ## 範例程式碼
 

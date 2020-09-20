@@ -28,11 +28,11 @@ self.db = mongoClient['bot-db']
 
 ```python
 @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
-            return
-        if message.content == 'foo': # 當收到訊息為‘foo’
-            await message.channel.send('bar') # 回應‘bar’
+async def on_message(self, message):
+    if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
+        return
+    if message.content == 'foo': # 當收到訊息為‘foo’
+        await message.channel.send('bar') # 回應‘bar’
 ```
 
 依照上面的範本，我們可以利用資料庫讓機器人記住更多回應組合。
@@ -93,12 +93,12 @@ print(collection.find_one(query))	# 尋找單一結果
 
 ```python
 @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
-            return
-        found = self.db['reply'].find_one({'server': message.guild.id, 'receive': message.content})
-        if found is not None:	# 當收到訊息有在資料庫內，則回應訊息
-            await message.channel.send(found['send'])
+async def on_message(self, message):
+    if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
+        return
+    found = self.db['reply'].find_one({'server': message.guild.id, 'receive': message.content})
+    if found is not None:	# 當收到訊息有在資料庫內，則回應訊息
+        await message.channel.send(found['send'])
 ```
 
 我們更改了兩樣東西：
@@ -112,6 +112,8 @@ print(collection.find_one(query))	# 尋找單一結果
 
 下一篇，我們會知道如何使用指令來讓機器人存取資料庫
 
+
+
 ## 範例程式碼
 
 ### event.py
@@ -119,6 +121,7 @@ print(collection.find_one(query))	# 尋找單一結果
 ```python
 import discord
 from discord.ext import commands
+from pymongo import MongoClient
 
 class Event(commands.Cog):
     def __init__(self, bot):
