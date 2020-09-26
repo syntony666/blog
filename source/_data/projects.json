@@ -1,7 +1,7 @@
-// [
-//     // {
-//     //    "name":"Discord Bot",
-//     //    "url":"https://github.com/syntony666/discord-bot/",
-//     //    "desc":"all featured bot, [invite link](http://discord-bot.syntony666.com)"
-//     // }
-// ]
+[
+    {
+       "name":"Discord Bot",
+       "url":"https://github.com/syntony666/discord-bot/",
+       "desc":"all featured bot, [invite link](http://discord-bot.syntony666.com)"
+    }
+]

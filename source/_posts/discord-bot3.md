@@ -92,7 +92,7 @@ ID:<your_bot_id>
 ```python
 @commands.Cog.listener()
 async def on_message(self, message)
-if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
+    if message.author == self.bot.user: # 確認傳訊者不是機器人避免洗版
         return
     if message.content == 'foo': # 當收到訊息為‘foo’
         await message.channel.send('bar') # 回應‘bar’
