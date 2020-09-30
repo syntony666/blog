@@ -86,4 +86,4 @@ deploy:
   type: git
   repo: https://github.com/syntony666/blog.git
   branch: gh-pages
-  message: change layouts
+  message:
