@@ -84,6 +84,6 @@ theme: cactus-dark
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/syntony666/blog.git
+  repo: git@github.com:syntony666/blog.git
   branch: gh-pages
   message:
