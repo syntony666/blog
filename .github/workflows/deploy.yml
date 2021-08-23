@@ -22,8 +22,6 @@ jobs:
       run: |-
         npm install --no-optional
         npm install -g hexo-cli
-    - name: Build Site
-      run: npm run build
     - name: Prepare before deploy
       run: |-
         git config --global user.name "syntony666"
