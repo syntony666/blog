@@ -90,7 +90,7 @@ logo:
 favicon:
   enable: true
   desktop:
-    url: /images/logo.ico
+    url: /images/favicon.ico
     gravatar: false
   android:
     url: /images/android-chrome-192x192.png
