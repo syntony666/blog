@@ -1,5 +1,5 @@
 # Tony's Imagine Space
-![Github Page](https://github.com/github/docs/actions/workflows/deploy.yml/badge.svg)
+![Github Page](https://github.com/syntony666/blog/actions/workflows/deploy.yml/badge.svg)
 
 ### The blog with what I learnt and some techniques.
 
