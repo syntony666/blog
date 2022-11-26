@@ -6,4 +6,4 @@
 
 [![View Site](https://img.shields.io/badge/View_site-Tony's_Imagine_Space-834abe?style=for-the-badge)](https://syntony666.github.io/blog/)
 
-### The blog with what I learnt and some techniques.
+The blog with what I learnt and some techniques.
