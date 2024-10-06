@@ -83,8 +83,8 @@ theme: cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:syntony666/blog.git
-  branch: gh-pages
-  message:
+# deploy:
+#   type: git
+#   repo: git@github.com:syntony666/blog.git
+#   branch: gh-pages
+#   message:
