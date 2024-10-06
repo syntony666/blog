@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="將資料庫連結至 Discord Bot我們在第三篇學到如何讓機器人回應我們，第四篇知道如何連接資料庫，這篇我們要應用這兩篇的方法來讓機器人使用資料庫來記憶及讀取我們要他回應的話。 使用 MongoPy 連結機器人利用上一篇的方法，在 event.py 的 __init__(self) 中新增下列程式碼： 12mongoClinet &#x3D; MongoClient(&lt;database_url&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discord 對話機器人製作全記錄（五）">
+<meta property="og:url" content="http://yoursite.com/archives/discord-bot5/index.html">
+<meta property="og:site_name" content="Tony&#39;s Imagine Space">
+<meta property="og:description" content="將資料庫連結至 Discord Bot我們在第三篇學到如何讓機器人回應我們，第四篇知道如何連接資料庫，這篇我們要應用這兩篇的方法來讓機器人使用資料庫來記憶及讀取我們要他回應的話。 使用 MongoPy 連結機器人利用上一篇的方法，在 event.py 的 __init__(self) 中新增下列程式碼： 12mongoClinet &#x3D; MongoClient(&lt;database_url&amp;gt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-12T11:44:47.000Z">
+<meta property="article:modified_time" content="2024-10-06T17:45:39.394Z">
+<meta property="article:author" content="Tony">
+<meta property="article:tag" content="discord-bot">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Discord 對話機器人製作全記錄（五）</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/syntony666">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/archives/discord-bot6/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/archives/discord-bot4/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/archives/discord-bot5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/archives/discord-bot5/&text=Discord 對話機器人製作全記錄（五）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/archives/discord-bot5/&is_video=false&description=Discord 對話機器人製作全記錄（五）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Discord 對話機器人製作全記錄（五）&body=Check out this article: http://yoursite.com/archives/discord-bot5/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/archives/discord-bot5/&name=Discord 對話機器人製作全記錄（五）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/archives/discord-bot5/&t=Discord 對話機器人製作全記錄（五）"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%87%E8%B3%87%E6%96%99%E5%BA%AB%E9%80%A3%E7%B5%90%E8%87%B3-Discord-Bot"><span class="toc-number">1.</span> <span class="toc-text">將資料庫連結至 Discord Bot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-MongoPy-%E9%80%A3%E7%B5%90%E6%A9%9F%E5%99%A8%E4%BA%BA"><span class="toc-number">1.1.</span> <span class="toc-text">使用 MongoPy 連結機器人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E7%94%A8%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.</span> <span class="toc-text">取用資料庫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%87%E5%9B%9E%E6%87%89%E7%B5%84%E5%90%88%E5%AF%AB%E5%85%A5%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.1.</span> <span class="toc-text">將回應組合寫入資料庫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%80%E5%8F%96%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">讀取資料庫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%93%E6%A9%9F%E5%99%A8%E4%BA%BA%E5%9B%9E%E6%87%89%E8%B3%87%E6%96%99%E5%BA%AB%E5%85%A7%E7%9A%84%E5%9B%9E%E6%87%89%E7%B5%84%E5%90%88"><span class="toc-number">1.3.</span> <span class="toc-text">讓機器人回應資料庫內的回應組合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-number">1.4.</span> <span class="toc-text">範例程式碼</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#event-py"><span class="toc-number">1.4.1.</span> <span class="toc-text">event.py</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Discord 對話機器人製作全記錄（五）
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Tony</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-12T11:44:47.000Z" class="dt-published" itemprop="datePublished">2020-09-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Discord-Bot/">Discord Bot</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Python/" rel="tag">Python</a>, <a class="p-category" href="/tags/database/" rel="tag">database</a>, <a class="p-category" href="/tags/discord-bot/" rel="tag">discord-bot</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="將資料庫連結至-Discord-Bot"><a href="#將資料庫連結至-Discord-Bot" class="headerlink" title="將資料庫連結至 Discord Bot"></a>將資料庫連結至 Discord Bot</h1><p>我們在第三篇學到如何讓機器人回應我們，第四篇知道如何連接資料庫，這篇我們要應用這兩篇的方法來讓機器人使用資料庫來記憶及讀取我們要他回應的話。</p>
+<h2 id="使用-MongoPy-連結機器人"><a href="#使用-MongoPy-連結機器人" class="headerlink" title="使用 MongoPy 連結機器人"></a>使用 MongoPy 連結機器人</h2><p>利用上一篇的方法，在 <code>event.py</code> 的 <code>__init__(self)</code> 中新增下列程式碼：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongoClinet = MongoClient(&lt;database_url&gt;)  <span class="comment"># 連結到資料庫</span></span><br><span class="line"><span class="variable language_">self</span>.db = mongoClient[<span class="string">&#x27;bot-db&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>在 Python 中，使用 self 可讓該變數在相同類別中使用，所以我們就可以讓這個類別去取用 DB(資料庫) 中的資料。</p>
+<h2 id="取用資料庫"><a href="#取用資料庫" class="headerlink" title="取用資料庫"></a>取用資料庫</h2><p>我們先來看看第三篇的 <code>on_message()</code> :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@commands.Cog.listener()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="keyword">if</span> message.author == <span class="variable language_">self</span>.bot.user: <span class="comment"># 確認傳訊者不是機器人避免洗版</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> message.content == <span class="string">&#x27;foo&#x27;</span>: <span class="comment"># 當收到訊息為‘foo’</span></span><br><span class="line">        <span class="keyword">await</span> message.channel.send(<span class="string">&#x27;bar&#x27;</span>) <span class="comment"># 回應‘bar’</span></span><br></pre></td></tr></table></figure>
+
+<p>依照上面的範本，我們可以利用資料庫讓機器人記住更多回應組合。</p>
+<h3 id="將回應組合寫入資料庫"><a href="#將回應組合寫入資料庫" class="headerlink" title="將回應組合寫入資料庫"></a>將回應組合寫入資料庫</h3><p>要讓機器人回話之前，我們必須先告訴機器人要回應的話跟觸發的詞語，所以我們先新增一些回應組合到 DB：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line">mongoClinet = MongoClient(&lt;database_url&gt;)  <span class="comment"># 連結到資料庫</span></span><br><span class="line">db = mongoClient[<span class="string">&#x27;bot-db&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;reply&#x27;</span>]  <span class="comment"># 進入Collection，若原本沒有則會自行新增</span></span><br><span class="line"></span><br><span class="line">post = &#123;</span><br><span class="line">  <span class="string">&quot;guild&quot;</span>: &lt;your_guild_id&gt;, <span class="comment"># 請自行輸入伺服器ID</span></span><br><span class="line">  <span class="string">&quot;receive&quot;</span>: <span class="string">&#x27;fool&#x27;</span>,</span><br><span class="line">  <span class="string">&quot;send&quot;</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">   &#125;</span><br><span class="line">collection.insert_one(post)  <span class="comment"># 插入資料</span></span><br></pre></td></tr></table></figure>
+
+<p>在變數 <code>post</code>，我們儲存了伺服器 ID、觸發的話及機器人要回應的話</p>
+<p><code>insert_one</code> 是將傳入的 post 寫入至 DB</p>
+<p>當然，你可以自由改變 receive 與 send 的值，甚至執行多次</p>
+<h3 id="讀取資料庫"><a href="#讀取資料庫" class="headerlink" title="讀取資料庫"></a>讀取資料庫</h3><p>資料寫入後，我們必須將資料讀取後，把結果告訴機器人讓他去回應。</p>
+<p>我們必須先尋找內部的值，我們根據情境的不同可以利用 <code>find</code> 或是 <code>find_one</code> 來找出我們需要的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line">mongoClinet = MongoClient(&lt;database_url&gt;)  <span class="comment"># 連結到資料庫</span></span><br><span class="line">db = mongoClient[<span class="string">&#x27;bot-db&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;reply&#x27;</span>]  <span class="comment"># 進入Collection</span></span><br><span class="line"></span><br><span class="line">query=&#123;<span class="string">&quot;server&quot;</span>: &lt;your_guild_id&gt;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> found <span class="keyword">in</span> collection.find(query):	<span class="comment"># 尋找多個結果</span></span><br><span class="line">  <span class="built_in">print</span>(found)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(collection.find_one(query))	<span class="comment"># 尋找單一結果</span></span><br></pre></td></tr></table></figure>
+
+<p><code>find()</code>: 會回傳一個迭代器，必須利用for迴圈輸出結果</p>
+<p><code>find_one()</code>: 回傳單一值，若有多個結果只會回傳一個</p>
+<p><code>query</code>: 尋找的條件，型別為 dict</p>
+<h2 id="讓機器人回應資料庫內的回應組合"><a href="#讓機器人回應資料庫內的回應組合" class="headerlink" title="讓機器人回應資料庫內的回應組合"></a>讓機器人回應資料庫內的回應組合</h2><p>在上面，我們知道怎麼如何寫入及讀取資料庫，現在我們可以來讓腦容量增加之後的機器人回應我們說的話了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@commands.Cog.listener()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">self, message</span>):</span><br><span class="line">    <span class="keyword">if</span> message.author == <span class="variable language_">self</span>.bot.user: <span class="comment"># 確認傳訊者不是機器人避免洗版</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    found = <span class="variable language_">self</span>.db[<span class="string">&#x27;reply&#x27;</span>].find_one(&#123;<span class="string">&#x27;server&#x27;</span>: message.guild.<span class="built_in">id</span>, <span class="string">&#x27;receive&#x27;</span>: message.content&#125;)</span><br><span class="line">    <span class="keyword">if</span> found <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:	<span class="comment"># 當收到訊息有在資料庫內，則回應訊息</span></span><br><span class="line">        <span class="keyword">await</span> message.channel.send(found[<span class="string">&#x27;send&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>我們更改了兩樣東西：</p>
+<ol>
+<li>利用 find_one 判斷是否要回話，若找得到這伺服器中有此回應組合就回應訊息</li>
+<li>讓機器人回應資料庫內的內容</li>
+</ol>
+<p>在這篇，我們讓機器人利用資料庫回應訊息，但還是需要利用程式碼來添加回應組合。</p>
+<p>下一篇，我們會知道如何使用指令來讓機器人存取資料庫</p>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><h3 id="event-py"><a href="#event-py" class="headerlink" title="event.py"></a>event.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> discord</span><br><span class="line"><span class="keyword">from</span> discord.ext <span class="keyword">import</span> commands</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Event</span>(commands.Cog):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, bot</span>):</span><br><span class="line">        <span class="variable language_">self</span>.bot = bot</span><br><span class="line">        mongoClinet = MongoClient(&lt;database_url&gt;)  <span class="comment"># 連結到資料庫</span></span><br><span class="line">				<span class="variable language_">self</span>.db = mongoClient[<span class="string">&#x27;bot-db&#x27;</span>]</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @commands.Cog.listener()</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">self, message</span>):</span><br><span class="line">        <span class="keyword">if</span> message.author == <span class="variable language_">self</span>.bot.user: <span class="comment"># 確認傳訊者不是機器人避免洗版</span></span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        found = <span class="variable language_">self</span>.db[<span class="string">&#x27;reply&#x27;</span>].find_one(&#123;<span class="string">&#x27;server&#x27;</span>: message.guild.<span class="built_in">id</span>, <span class="string">&#x27;receive&#x27;</span>: message.content&#125;)</span><br><span class="line">        <span class="keyword">if</span> found <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:	<span class="comment"># 當收到訊息有在資料庫內，則回應訊息</span></span><br><span class="line">            <span class="keyword">await</span> message.channel.send(found[<span class="string">&#x27;send&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">bot</span>):</span><br><span class="line">    bot.add_cog(Event(bot))</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/categories/">categories</a></li>
+        
+          <li><a href="/tags/">tags</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/syntony666">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%87%E8%B3%87%E6%96%99%E5%BA%AB%E9%80%A3%E7%B5%90%E8%87%B3-Discord-Bot"><span class="toc-number">1.</span> <span class="toc-text">將資料庫連結至 Discord Bot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-MongoPy-%E9%80%A3%E7%B5%90%E6%A9%9F%E5%99%A8%E4%BA%BA"><span class="toc-number">1.1.</span> <span class="toc-text">使用 MongoPy 連結機器人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E7%94%A8%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.</span> <span class="toc-text">取用資料庫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%87%E5%9B%9E%E6%87%89%E7%B5%84%E5%90%88%E5%AF%AB%E5%85%A5%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.1.</span> <span class="toc-text">將回應組合寫入資料庫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%80%E5%8F%96%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">讀取資料庫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%93%E6%A9%9F%E5%99%A8%E4%BA%BA%E5%9B%9E%E6%87%89%E8%B3%87%E6%96%99%E5%BA%AB%E5%85%A7%E7%9A%84%E5%9B%9E%E6%87%89%E7%B5%84%E5%90%88"><span class="toc-number">1.3.</span> <span class="toc-text">讓機器人回應資料庫內的回應組合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-number">1.4.</span> <span class="toc-text">範例程式碼</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#event-py"><span class="toc-number">1.4.1.</span> <span class="toc-text">event.py</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/archives/discord-bot5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://yoursite.com/archives/discord-bot5/&text=Discord 對話機器人製作全記錄（五）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/archives/discord-bot5/&is_video=false&description=Discord 對話機器人製作全記錄（五）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Discord 對話機器人製作全記錄（五）&body=Check out this article: http://yoursite.com/archives/discord-bot5/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://yoursite.com/archives/discord-bot5/&title=Discord 對話機器人製作全記錄（五）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://yoursite.com/archives/discord-bot5/&name=Discord 對話機器人製作全記錄（五）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/archives/discord-bot5/&t=Discord 對話機器人製作全記錄（五）"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2024
+    Tony
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/syntony666">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'syntony666-github-io';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
