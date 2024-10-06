@@ -10,7 +10,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   不管過程多坎坷，希望最後的一切都會圓滿。
 keywords:
 author: Tony
-language: en
+language: zh
 timezone: Asia/Taipei
 
 # URL
@@ -40,6 +40,9 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:
