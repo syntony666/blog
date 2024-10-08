@@ -4,16 +4,14 @@
  comments: false
 ---
 
-一個對程式有極高熱誠但內心常常迷惘的迷糊大學生。
+一個在心裡有著小小夢想的普通人
 
-### Profiles
+## Profiles
 
-- Graduate from HCHS in Kaohsiung
+- Graduate from NTUT EECS and major in CSIE
 
-- Studying in NTUT EECS and major in CSIE
+- Frontend software engineer in Sunbird DCIM Inc.
 
-- Having learnt Python, C, C++, Java, Javascript
-
-- Having project with Sunbird Inc.
+- Discord Bot, Web, Docker and Self-hosted
 
 Give me a star if you like me!
